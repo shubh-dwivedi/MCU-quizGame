@@ -30,17 +30,17 @@ var questions= [{
 var score = 0;
 
 function welcome() {
-  var welcomeMsg=chalk.white.bgBlue.bold("-: Welcome to this Marvel Cinematic Universe Quiz Game :-") + chalk.grey.bgWhite.italic("\n\nAre you the biggest MCU fan? Well you can check out yourself by playing this amazing quiz game where you have to answer " +questions.length+" questions based on marvel superheroes.")
+  var welcomeMsg=chalk.white.hex('#FFaa00').bold("-: Welcome to this Marvel Cinematic Universe Quiz Game :-") + chalk.grey.bgWhite.italic("\n\nAre you the biggest MCU fan? Well you can check out yourself by playing this amazing quiz game where you have to answer " +questions.length+" questions based on marvel superheroes.")
   console.log(welcomeMsg);
 
-var userName=readlinesync.question(chalk.blue.bgGreen.bold("\nPlease enter your name:\t"))
+var userName=readlinesync.question(chalk.white.bgCyan.bold("\nPlease enter your name:\t"))
 
 console.log("\nHey "+userName+" , Let's start the game\n");
 }
 
 
-function checkAnswer(question,answer) {
-  var answered = readlinesync.question(question);
+function checkAnswer(question,answer,index) {
+  var answered = readlinesync.question(index+". "+question);
 
   if( answered.toUpperCase() === answer.toUpperCase() ) {
     score += 1;
@@ -56,7 +56,7 @@ function checkAnswer(question,answer) {
 function game() {
   for (var i=0; i<questions.length; i++) {
     var currentQuestion = questions[i];
-    checkAnswer(currentQuestion.question, currentQuestion.answer)
+    checkAnswer(currentQuestion.question, currentQuestion.answer, i+1);
   }
 }
 
